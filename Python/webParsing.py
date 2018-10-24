@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 import requests
 
-request = requests.get('http://2018shell2.picoctf.com:3827/flag')
+request = requests.get('http://realsung.github.com')
 
 # HTML 소스 가져오기
 html_parsing = request.text
