@@ -24,7 +24,7 @@ def translate(string, key, mode):
             translated_string += char
     return translated_string
 
-encrypted = '' # input
+encrypted = 'c3Vucmlu' # input
 for i in range(1, 26):
     decrypted = translate(encrypted, i, 'decrypt')
     print ("".join(['ROT', str(i), ': ', decrypted]))
