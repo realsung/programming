@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 import requests
 
-request = requests.get('http://realsung.github.com')
+request = requests.get('https://realsung.github.io')
 
 # HTML 소스 가져오기
 html_parsing = request.text
