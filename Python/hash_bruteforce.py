@@ -2,7 +2,7 @@ import string
 import hashlib
 from itertools import product
 passwd = 'hash'
-hash_value = hashlib.md5(passwd).hexdigest() # 0800fc577294c34e0b28ad2839435945 
+hash_value = hashlib.md5(passwd).hexdigest() 
 chars = string.ascii_lowercase
 for length in range(1,5):
 	attempt = product(chars, repeat=length)
