@@ -16,7 +16,7 @@ Word *init();
 int getDic(Word *word);
 void printList(Word *word);
 void sortWord(Word *word);
-int game(Word *word);
+void game(Word *word);
 
 int main(){
     int score = 0;
@@ -29,12 +29,13 @@ int main(){
     sortWord(word);
 
     while(1){
-        printf("1) 영어 단어 맞추기\n2) 프로그램 종료\n>> ");
+        puts(">> 영어 단어 맞추기 프로그램 <<");
+        printf("1. 영어 단어 맞추기\t\t2. 프로그램 종료\n\n번호를 선택하세요: ");
         scanf("%s", input);
         if(!strcmp(input,"1")){
             // printList(word);
-            score = game(word);
-            printf("점수 : %d\n",score);
+            game(word);
+            getchar(); getchar();
         }else if(!strcmp(input,"2")){
             sleep(0.5);
             system("clear");
@@ -100,22 +101,27 @@ void sortWord(Word *word){
     }
 }
 
-int game(Word *word){
-    int score = 0, stage = 1;
+void game(Word *word){
+    int score = 0, wrong = 0, stage = 1;
     char input[0x100];
     Word *p = word;
     while(p != NULL){
-        printf("[Stage %d] %s : ",stage++, p->kor);
-        scanf("%s",input);
+        printf("%s -> ",p->kor);
+        scanf("%255s",input);
         if(!strcmp(input, p->eng)){
             score++;
             puts("correct!");
         }else if(!strcmp(input, ".quit")){
-            return score;
+            if(score == 0){
+                puts("당신의 점수는 0.00 점입니다.");
+            }else{
+                printf("당신의 점수는 %.2lf 점입니다.\n",(double)(100*score)/(score+wrong));
+            }
+            return;
         }else{
             puts("incorrect!");
+            wrong++;
         }
         p = p->next;
     }
-    return score;
 }
